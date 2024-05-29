@@ -19,11 +19,11 @@ index 2e746d8..e7f6977 100644
 +                tp = weight.dtype
 +
 +                gen = torch.manual_seed(v[0])
-+                noise = torch.randn(size=weight.size(), dtype=tp, layout=weight.layout, generator=gen, device='cpu')
++                noise = torch.rand(size=weight.size(), dtype=tp, layout=weight.layout, generator=gen, device='cpu')
 +                noise = (noise.to(weight.device) - 0.5) * strength * 2
 +
 +                gen = torch.manual_seed(v[2])
-+                mask_noise = torch.randn(size=weight.size(), dtype=tp, layout=weight.layout, generator=gen, device='cpu')
++                mask_noise = torch.rand(size=weight.size(), dtype=tp, layout=weight.layout, generator=gen, device='cpu')
 +                noise *= ((v[1] - mask_noise.to(weight.device)) * 1000000).clamp(0, 1)
 +
 +                weight += noise
