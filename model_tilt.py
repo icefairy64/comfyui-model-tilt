@@ -44,7 +44,11 @@ class ModelTilt:
 
         new_model = model.clone()
         seed_offset = 0
-        for key in model.model_keys:
+
+        keys = [k for k in model.model_keys]
+        keys.sort()
+
+        for key in keys:
             if key.find(target) < 0:
                 continue
             new_model.add_patches({
